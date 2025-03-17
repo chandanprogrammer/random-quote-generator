@@ -40,16 +40,16 @@ const displayQuote = async () => {
     "%20"
   )}%20(%20Author%20:%20${responseData.data.author.replaceAll(" ", "%20")}%20)`;
 
+  // check and remove previous twitter link
   if (shareBtn.childNodes) {
     shareBtn.removeChild(shareBtn.firstChild);
-    // console.log(shareBtn.childNodes);
   }
   a.setAttribute("href", generateLink);
   a.setAttribute("target", "_blank");
-  a.setAttribute("id", "twitter-link");
   a.innerText = "Share on Twitter";
   shareBtn.appendChild(a);
 
+  // display quote and author on web page
   quoteShow.innerText = responseData.data.content;
   quoteAuthor.innerHTML = `<span>Author : </span>${responseData.data.author}`;
 
@@ -61,17 +61,23 @@ const displayQuote = async () => {
 
 // function define for copy quote in clipboard
 const copyQuote = () => {
-  navigator.clipboard.writeText(responseData.data.content);
-
-  // create a div element for show popup copied quote
   divElement.classList.add("copied-popup");
   divElement.style.display = "block";
-  divElement.innerHTML = `<span> copied Quote! </span> ${responseData.data.content} <img id="cross-popup" src="./images/close.png" alt="">`;
+  navigator.clipboard
+    .writeText(responseData.data.content)
+    .then(() => {
+      // create a div element for show popup copied quote
+      divElement.innerHTML = `<span> copied Quote! </span> ${responseData.data.content} <img id="cross-popup" src="./images/close.png" alt="">`;
+    })
+    .catch((err) => {
+      divElement.innerText = err.message;
+    });
 
   // remove popup automatic after 5sec
   setTimeout(() => {
     divElement.style.display = "none";
   }, 5 * 1000);
+
   main.appendChild(divElement);
 
   // remove popup when click on cross icon
@@ -82,7 +88,7 @@ const copyQuote = () => {
 };
 
 // function define for take screenshot of quote
-function getScreenshot() {
+const getScreenshot = () => {
   html2canvas(quoteBox).then(function (c) {
     const url = c.toDataURL();
     const linkElement = document.createElement("a");
@@ -91,12 +97,12 @@ function getScreenshot() {
     linkElement.click();
     linkElement.remove();
   });
-}
+};
 
 // addEventListener implementation
 newQuoteBtn.addEventListener("click", displayQuote);
 copyQuoteBtn.addEventListener("click", copyQuote);
 exportBtn.addEventListener("click", getScreenshot);
 
-// dispalyQuote call when load page
+// dispalyQuote call when page load
 displayQuote();

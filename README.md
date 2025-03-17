@@ -1,35 +1,55 @@
-Objective: Create a simple website that fetches and displays a random quote from the API.
+# Random Quote Generator
+![alt text](./images/image.png)
+## Overview
+This project is a simple website that fetches and displays a random quote from an API. Users can generate new quotes, copy them to the clipboard, share them on Twitter, and even export them as an image.
 
-Features:
+## Features
+- **Fetch a random quote** from the API.
+- **Display the quote** along with the author's name.
+- **Random Background** change when new click on new quote button
+- **New Quote Button** to fetch and display another random quote.
+- **Copy Quote Button** to copy the displayed quote.
+- **Share on Twitter Button** to share the quote on Twitter.
+- **Random Background Image** for each new quote.
+- **Export Button** to download the quote as an image.
 
-Fetch a random quote from the API.✅
-Display the quote and author on the page. ✅
-Add a "New Quote" button to fetch another quote. ✅
-Implement a copy to clipboard button. ✅
-Add a share on Twitter button. ✅
-
-Bonus extra points
-Set a random background image behind the quote ✅
-Add a "Export" button to save the quote image to user computer ✅
-
-API Endpoint
+## API Endpoint
+Quotes are fetched from the following API:
+```
 https://api.freeapi.app/api/v1/public/quotes/quote/random
+```
 
-Documentation
-https://freeapi.hashnode.space/api-guide/apireference/getARandomQuote
+## Technologies Used
+- HTML
+- CSS
+- JavaScript
+- [html2canvas](https://html2canvas.hertzen.com/) (for screenshot functionality)
 
-Evaluation Parameters
-Code Quality – Maintain clean, readable, and modular code with proper comments and structure.
-Responsiveness – The application should be fully functional and visually consistent across mobile and desktop devices.
+## Setup Instructions
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-repo/random-quote-generator.git
+   ```
+2. Navigate to the project folder:
+   ```bash
+   cd random-quote-generator
+   ```
+3. Open `index.html` in your browser.
 
-Submission Instructions
-GitHub Repository – Push the complete project to a public GitHub repository.
-Deployment – Host the application using a platform such as Vercel, Netlify, or any other suitable service.
-Documentation – Provide a well-structured README.md file containing:
-Application features
-Screenshots
-Deployment link
-Submission – Share both the repository link and the hosted application link.
+## How It Works
+1. When the page loads, a random quote is displayed.
+2. Clicking the **New Quote** button fetches a new quote.
+3. Clicking the **Copy** button copies the quote to the clipboard.
+4. Clicking the **Twitter Share** button opens Twitter with a pre-filled tweet.
+5. Clicking the **Export** button downloads the quote as an image.
 
-Highest Marks
-15
+## Files Structure
+```
+project-folder/
+│── index.html       # Main HTML file
+│── style.css        # Styling file
+│── script.js        # JavaScript file
+│── images/          # Background images folder
+└── README.md        # Project documentation
+```
+
