@@ -38,12 +38,11 @@ const displayQuote = async () => {
   let generateLink = `https://twitter.com/intent/tweet?text=${responseData.data.content.replaceAll(
     " ",
     "%20"
-  )} ( By - ${responseData.data.author.replaceAll(" ", "%20")} )`;
+  )}%20(%20Author%20:%20${responseData.data.author.replaceAll(" ", "%20")}%20)`;
 
   if (shareBtn.childNodes) {
-    shareBtn.removeChild(shareBtn.firstChild)
+    shareBtn.removeChild(shareBtn.firstChild);
     // console.log(shareBtn.childNodes);
-    
   }
   a.setAttribute("href", generateLink);
   a.setAttribute("target", "_blank");
@@ -52,7 +51,7 @@ const displayQuote = async () => {
   shareBtn.appendChild(a);
 
   quoteShow.innerText = responseData.data.content;
-  quoteAuthor.innerText = `- ${responseData.data.author}`;
+  quoteAuthor.innerHTML = `<span>Author : </span>${responseData.data.author}`;
 
   // random background image change
   const randomNumber = Math.floor(Math.random() * 10) + 1;

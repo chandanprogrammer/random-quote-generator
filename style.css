@@ -100,6 +100,10 @@ a {
   font-weight: 700;
   word-spacing: 2px;
 }
+#quote-author span{
+  color: #150ba2;
+  font-weight: 800;
+}
 .btn-section {
   margin-top: 4em;
   position: absolute;
@@ -122,9 +126,32 @@ a {
   color: #fff;
 }
 .button:hover {
-  background-color: rgb(9, 54, 67);
   transition: all 0.5s linear;
   scale: 1.1;
+}
+#new-quote-btn{
+  background-color: #d66b08;
+}
+#new-quote-btn:hover{
+  background-color: #964c07;
+}
+#copy-quote-btn{
+  background-color: #0d9c0a;
+}
+#copy-quote-btn:hover{
+  background-color: #076005;
+}
+#share-btn{
+  background-color: #067ca0;
+}
+#share-btn:hover{
+  background-color: #06495d;
+}
+#export-btn{
+  background-color: #5114a0;
+}
+#export-btn:hover{
+  background-color: #2a045c;
 }
 .copied-popup {
   display: flex;
@@ -143,7 +170,7 @@ a {
   font-size: 16px;
   line-height: 24px;
   letter-spacing: 0.5px;
-  z-index: 3;
+  z-index: 4;
   animation-name: popup-copied;
   animation-duration: 1s;
 }
@@ -170,4 +197,48 @@ a {
   100% {
     right: 30px;
   }
+}
+
+@media screen and (max-width: 720px) {
+  .quote-box {
+    margin-top: 5em;
+    width: 85vw;
+    font-size: 18px;
+    line-height: 1.5em;
+    transform: rotate(-3deg);
+  }
+  #quote-author {
+    width: 90%;
+    word-spacing: 1px;
+  }
+.btn-section {
+  position: absolute;
+  bottom: 6em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.button {
+  padding: 10px 20px;
+  font-size: 17px;
+  margin: 0 15px;
+  background-color: rgb(6, 97, 125);
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+@keyframes popup-copied {
+  0% {
+    right: 0;
+  }
+  100% {
+    right: 30px;
+  }
+}
 }
