@@ -168,7 +168,7 @@ a {
   right: 30px;
   background-color: rgb(240, 77, 123, 0.8);
   color: #ffffff;
-  padding: 1.5em 1em;
+  padding: 1.5em 0.8em;
   width: 400px;
   border-radius: 6px;
   font-size: 16px;
@@ -194,7 +194,7 @@ a {
   cursor: pointer;
 }
 
-/* ---------- Animation  */
+/* ---------- Animation ---------- */
 @keyframes popup-copied {
   0% {
     right: -400px;
@@ -225,5 +225,10 @@ a {
     justify-content: center;
     flex-wrap: wrap;
     gap: 20px;
+  }
+  .copied-popup {
+    bottom: 15vh;
+    right: 30px;
+    width: 300px;
   }
 }

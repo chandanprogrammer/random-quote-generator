@@ -3,6 +3,8 @@
 ## Overview
 This project is a simple website that fetches and displays a random quote from an API. Users can generate new quotes, copy them to the clipboard, share them on Twitter, and even export them as an image.
 
+**Live vercel link -** [https://random-quote-generator-red-xi.vercel.app]
+
 ## Features
 - **Fetch a random quote** from the API.
 - **Display the quote** along with the author's name.
@@ -12,6 +14,7 @@ This project is a simple website that fetches and displays a random quote from a
 - **Share on Twitter Button** to share the quote on Twitter.
 - **Random Background Image** for each new quote.
 - **Export Button** to download the quote as an image.
+- Mobile responsivew
 
 ## API Endpoint
 Quotes are fetched from the following API:

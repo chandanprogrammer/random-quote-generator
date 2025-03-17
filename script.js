@@ -7,6 +7,8 @@ const copyQuoteBtn = document.getElementById("copy-quote-btn");
 const shareBtn = document.getElementById("share-btn");
 const exportBtn = document.getElementById("export-btn");
 
+
+
 // create a div element referance for show popup copied quote
 const divElement = document.createElement("div");
 
@@ -64,15 +66,15 @@ const copyQuote = () => {
   divElement.classList.add("copied-popup");
   divElement.style.display = "block";
   navigator.clipboard
-    .writeText(responseData.data.content)
-    .then(() => {
-      // create a div element for show popup copied quote
-      divElement.innerHTML = `<span> copied Quote! </span> ${responseData.data.content} <img id="cross-popup" src="./images/close.png" alt="">`;
+  .writeText(responseData.data.content)
+  .then(() => {
+    // create a div element for show popup copied quote
+    divElement.innerHTML = `<span> copied Quote! </span> ${responseData.data.content} <img id="cross-popup" src="./images/close.png" alt="">`;
     })
     .catch((err) => {
       divElement.innerText = err.message;
     });
-
+    
   // remove popup automatic after 5sec
   setTimeout(() => {
     divElement.style.display = "none";
