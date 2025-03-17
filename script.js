@@ -7,8 +7,6 @@ const copyQuoteBtn = document.getElementById("copy-quote-btn");
 const shareBtn = document.getElementById("share-btn");
 const exportBtn = document.getElementById("export-btn");
 
-
-
 // create a div element referance for show popup copied quote
 const divElement = document.createElement("div");
 
@@ -32,11 +30,20 @@ const getData = async () => {
 // function define for display quote
 const displayQuote = async () => {
   await getData();
+  linkGenerateForTwitter();
+  // display quote and author on web page
+  quoteShow.innerText = responseData.data.content;
+  quoteAuthor.innerHTML = `<span>Author : </span>${responseData.data.author}`;
 
-  // set link for share quote on twitter
+  // random background image change
+  const randomNumber = Math.floor(Math.random() * 10) + 1;
+  main.style.backgroundImage = `url(./images/${randomNumber}.jpg)`;
+  quoteBox.style.backgroundImage = `url(./images/${randomNumber}.jpg)`;
+};
+
+// function define generate link for twitter share
+const linkGenerateForTwitter = () => {
   const a = document.createElement("a");
-
-  // generate link for twitter share
   let generateLink = `https://twitter.com/intent/tweet?text=${responseData.data.content.replaceAll(
     " ",
     "%20"
@@ -50,31 +57,17 @@ const displayQuote = async () => {
   a.setAttribute("target", "_blank");
   a.innerText = "Share on Twitter";
   shareBtn.appendChild(a);
-
-  // display quote and author on web page
-  quoteShow.innerText = responseData.data.content;
-  quoteAuthor.innerHTML = `<span>Author : </span>${responseData.data.author}`;
-
-  // random background image change
-  const randomNumber = Math.floor(Math.random() * 10) + 1;
-  main.style.backgroundImage = `url(./images/${randomNumber}.jpg)`;
-  quoteBox.style.backgroundImage = `url(./images/${randomNumber}.jpg)`;
 };
 
 // function define for copy quote in clipboard
 const copyQuote = () => {
   divElement.classList.add("copied-popup");
   divElement.style.display = "block";
-  navigator.clipboard
-  .writeText(responseData.data.content)
-  .then(() => {
-    // create a div element for show popup copied quote
-    divElement.innerHTML = `<span> copied Quote! </span> ${responseData.data.content} <img id="cross-popup" src="./images/close.png" alt="">`;
-    })
-    .catch((err) => {
-      divElement.innerText = err.message;
-    });
-    
+  navigator.clipboard.writeText(responseData.data.content);
+
+  // create a div element for show popup copied quote
+  divElement.innerHTML = `<span> copied Quote! </span> ${responseData.data.content} <img id="cross-popup" src="./images/close.png" alt="">`;
+
   // remove popup automatic after 5sec
   setTimeout(() => {
     divElement.style.display = "none";
